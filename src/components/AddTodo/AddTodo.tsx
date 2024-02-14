@@ -3,19 +3,29 @@ import { Button } from "../ui/button";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import { useAddTodoMutation } from "@/redux/apis/baseApi";
 
 
 const AddTodo = () => {
+    const [addTodo, { isLoading, isError }] = useAddTodoMutation();
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [priority, setPriority] = useState("");
+
+
+    // console.log(isLoading, isError);
+
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         const data = {
             title,
-            description
+            description,
+            priority,
+            status: false
         }
-        console.log(data);
+        addTodo(data);
 
 
     }
@@ -52,6 +62,22 @@ const AddTodo = () => {
                                 className="col-span-3"
                                 onBlur={(e) => setDescription(e.target.value)}
                             />
+                        </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
+                            <Label htmlFor="username" className="text-right">
+                                Priority
+                            </Label>
+                            <Select onValueChange={(e) => setPriority(e)}>
+                                <SelectTrigger className="col-span-3">
+                                    <SelectValue placeholder="Theme" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="High">High</SelectItem>
+                                    <SelectItem value="Medium">Medium</SelectItem>
+                                    <SelectItem value="Low">Low</SelectItem>
+                                </SelectContent>
+                            </Select>
+
                         </div>
                         <DialogClose asChild className="w-full mt-5">
                             <Button type="submit" className="col-span-12">Add</Button>

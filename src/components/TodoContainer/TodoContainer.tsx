@@ -2,15 +2,8 @@ import { PenBoxIcon, Trash2Icon } from "lucide-react";
 import { Checkbox } from "../ui/checkbox";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
 import { useGetTodosQuery } from "@/redux/apis/baseApi";
+import { TTodo } from "@/Types/todo.data.type";
 
-
-type TTodo = {
-    _id: string,
-    title: string,
-    description: string,
-    status: boolean,
-    priority: string
-}
 
 const TodoContainer = () => {
     const { data } = useGetTodosQuery(undefined);
