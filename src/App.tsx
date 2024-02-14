@@ -2,8 +2,12 @@ import "./styles/bg.css"
 import TodoContainer from "./components/TodoContainer/TodoContainer"
 import AddTodo from "./components/AddTodo/AddTodo"
 import TodoFilter from "./components/TodoFilter/TodoFilter"
+import { useState } from "react";
 
 function App() {
+  const [priority, setPriority] = useState('');
+  // console.log(priority);
+
 
   return (
     <section className="max-w-7xl mx-auto min-h-screen section-background flex items-center justify-center">
@@ -12,10 +16,10 @@ function App() {
 
         <div className="w-full flex items-center justify-between my-10">
           <AddTodo />
-          <TodoFilter />
+          <TodoFilter priority={priority} setPriority={setPriority} />
         </div>
 
-        <TodoContainer />
+        <TodoContainer priority={priority} />
       </div>
     </section>
   )

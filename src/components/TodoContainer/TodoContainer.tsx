@@ -5,8 +5,8 @@ import { useGetTodosQuery } from "@/redux/apis/baseApi";
 import { TTodo } from "@/Types/todo.data.type";
 
 
-const TodoContainer = () => {
-    const { data } = useGetTodosQuery(undefined);
+const TodoContainer = ({ priority }: { priority: string }) => {
+    const { data } = useGetTodosQuery(priority);
     // console.log(data);
 
     // console.log(isLoading, isError);

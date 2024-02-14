@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { TPriority } from "@/Types/todo.data.type";
 import { Button } from "../ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
 
 
-const TodoFilter = () => {
-    const [priority, setPriority] = useState('');
+const TodoFilter = ({ priority, setPriority }: TPriority) => {
     // console.log(priority);
 
 
@@ -18,6 +17,7 @@ const TodoFilter = () => {
                     <DropdownMenuLabel>Filter by priority</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuRadioGroup value={priority} onValueChange={setPriority}>
+                        <DropdownMenuRadioItem value="">All</DropdownMenuRadioItem>
                         <DropdownMenuRadioItem value="High">High</DropdownMenuRadioItem>
                         <DropdownMenuRadioItem value="Medium">Medium</DropdownMenuRadioItem>
                         <DropdownMenuRadioItem value="Low">Low</DropdownMenuRadioItem>

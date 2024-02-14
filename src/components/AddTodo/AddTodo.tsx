@@ -8,7 +8,7 @@ import { useAddTodoMutation } from "@/redux/apis/baseApi";
 
 
 const AddTodo = () => {
-    const [addTodo, { isLoading, isError }] = useAddTodoMutation();
+    const [addTodo] = useAddTodoMutation();
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [priority, setPriority] = useState("");
